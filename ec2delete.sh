@@ -17,40 +17,40 @@ region12=eu-west-2
 ### DELETE BEFORE CREATE
 ##Get instance current running on region
 insid1=$(aws ec2 describe-instances --filters --region $region1 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region1 --instance-ids $insid1
+aws ec2 terminate-instances --region $region1 --instance-ids $insid1 --output text
 
 insid2=$(aws ec2 describe-instances --filters --region $region2 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region2 --instance-ids $insid2
+aws ec2 terminate-instances --region $region2 --instance-ids $insid2 --output text
 
 insid3=$(aws ec2 describe-instances --filters --region $region3 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region3 --instance-ids $insid3
+aws ec2 terminate-instances --region $region3 --instance-ids $insid3 --output text
 
 insid4=$(aws ec2 describe-instances --filters --region $region4 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region4 --instance-ids $insid4
+aws ec2 terminate-instances --region $region4 --instance-ids $insid4 --output text
 
 insid5=$(aws ec2 describe-instances --filters --region $region5 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region5 --instance-ids $insid5
+aws ec2 terminate-instances --region $region5 --instance-ids $insid5 --output text
 
 #insid6=$(aws ec2 describe-instances --filters --region $region6 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
 #aws ec2 terminate-instances --region $region6 --instance-ids $insid6
 
 insid7=$(aws ec2 describe-instances --filters --region $region7 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region7 --instance-ids $insid7
+aws ec2 terminate-instances --region $region7 --instance-ids $insid7 --output text
 
 insid8=$(aws ec2 describe-instances --filters --region $region8 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region8 --instance-ids $insid8
+aws ec2 terminate-instances --region $region8 --instance-ids $insid8 --output text
 
 insid9=$(aws ec2 describe-instances --filters --region $region9 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region9 --instance-ids $insid9
+aws ec2 terminate-instances --region $region9 --instance-ids $insid9 --output text
 
 insid10=$(aws ec2 describe-instances --filters --region $region10 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region10 --instance-ids $insid10
+aws ec2 terminate-instances --region $region10 --instance-ids $insid10 --output text
 
 insid11=$(aws ec2 describe-instances --filters --region $region11 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region11 --instance-ids $insid11
+aws ec2 terminate-instances --region $region11 --instance-ids $insid11 --output text
 
 insid12=$(aws ec2 describe-instances --filters --region $region12 Name=instance-state-name,Values=running --query "Reservations[*].Instances[*].InstanceId" --output text)
-aws ec2 terminate-instances --region $region12 --instance-ids $insid12
+aws ec2 terminate-instances --region $region12 --instance-ids $insid12 --output text
 
 echo "done"
 

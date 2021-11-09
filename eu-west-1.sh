@@ -42,7 +42,7 @@ SubnetId=$(head -1 tempsubnet.txt)
 #   $SubnetId
 
 #create
-aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 --instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text > eu-west-1.txt
+aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 --instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text
 
 
 #finish
