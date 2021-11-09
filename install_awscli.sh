@@ -8,9 +8,12 @@ sudo apt install python3.8
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
-
+rm -rf awscliv2.zip
 
 #require plugin JQ
 sudo apt install -y jq
+
+
+chmod +x *.sh
 
 echo "done"

@@ -3,14 +3,32 @@
 #import variable
 region=ap-northeast-1
 amiubuntu=ami-036d0684fc96830ca
-#instancesType=t2.micro
+instancesType=t2.micro
 #instancesType=t2.small
-instancesType=t2.small
+#instancesType=t2.small
 
 #get keyname
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
 keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' keyname.json)
 #   $keyname
+
+PROCESS="KeyName";
+
+if cat keyname.json | grep -v grep | grep $PROCESS > /dev/null
+then
+        echo "$PROCESS Exits. Start create EC2" ;
+		#nothing todo
+else
+        echo "$PROCESS not exits, create new keyname" ;		
+        aws ec2 --region $region create-key-pair --key-name $region --output text > $region.pem
+fi
+
+echo "create keyname completed"
+
+aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
+keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' keyname.json)
+
+
 
 #get security group id
 aws ec2 describe-security-groups --region $region | jq . > securitygr.json
