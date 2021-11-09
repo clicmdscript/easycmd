@@ -53,8 +53,9 @@ wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/view-ec2.sh
 #wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/install_awscli.sh
 
 chmod +x *.sh
-echo "Add cron to system"
-./add_cronjob.sh
+
+#echo "Add cron to system"
+#./add_cronjob.sh
 
 echo "Install Python 3.8"
 sudo apt update
