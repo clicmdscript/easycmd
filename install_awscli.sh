@@ -7,9 +7,31 @@ read -p "Enter default region: us-east-1,us-east-2,us-west-1, us-west-2......:: 
 
 cd /home/ubuntu
 mkdir log/
+mkdir keypem/
 
 echo "Set timezone"
 sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+
+
+rm -rf ap-northeast-1.sh
+rm -rf ap-northeast-2.sh
+rm -rf ap-southeast-1.sh
+rm -rf ap-southeast-2.sh
+rm -rf ca-central-1.sh
+rm -rf eu-central-1.sh
+rm -rf eu-west-1.sh
+rm -rf eu-west-2.sh
+rm -rf us-east-1.sh
+rm -rf us-east-2.sh
+rm -rf us-west-1.sh
+rm -rf us-west-2.sh
+rm -rf cron.sh
+rm -rf ec2delete.sh
+rm -rf view-ec2.sh
+rm -rf add_cronjob.sh
+rm -rf *.pem
+rm -rf *.json
+rm -rf *.txt
 
 #wget all file 
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-1.sh

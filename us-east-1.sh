@@ -20,8 +20,7 @@ then
 		#nothing todo
 else
         echo "$PROCESS not exits, create new keyname" ;
-        HEXKEY=$(openssl rand -hex 3)	
-        aws ec2 --region $region create-key-pair --key-name $HEXKEY$region --output text > $HEXKEY$region.pem
+        aws ec2 --region $region create-key-pair --key-name $region --output text > /home/ubuntu/keypem/$region.pem
 fi
 
 echo "create keyname completed"
