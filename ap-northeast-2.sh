@@ -2,7 +2,7 @@
 
 #import variable
 region=ap-northeast-2
-amiubuntu=ami-ami-0252a84eb1d66c2a0
+amiubuntu=ami-0252a84eb1d66c2a0
 instancesType=t2.micro
 #instancesType=t2.small
 #instancesType=t2.medium
@@ -19,8 +19,9 @@ then
         echo "$PROCESS Exits. Start create EC2" ;
 		#nothing todo
 else
-        echo "$PROCESS not exits, create new keyname" ;		
-        aws ec2 --region $region create-key-pair --key-name $region --output text > $region.pem
+        echo "$PROCESS not exits, create new keyname" ;
+        HEXKEY=$(openssl rand -hex 3)	
+        aws ec2 --region $region create-key-pair --key-name $HEXKEY$region --output text > $HEXKEY$region.pem
 fi
 
 echo "create keyname completed"
@@ -43,9 +44,8 @@ SubnetId=$(head -1 tempsubnet.txt)
 
 #create
 aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 --instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text
-	
+
 
 #finish
-aws --version
 
 echo "Create done"
