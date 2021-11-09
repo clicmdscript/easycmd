@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /home/ubuntu
+mkdir log/
 #wget all file 
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-1.sh
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-2.sh

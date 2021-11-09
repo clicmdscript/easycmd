@@ -6,20 +6,22 @@ cd /home/ubuntu
 echo "Delete all completed in all region"
 echo "Start create new instance in random region"
 
+datelog=$(date "+%Y.%m.%d-%H.%M")
 
 COMMANDS=(
-"./us-east-1.sh"
-"./us-east-2.sh"
-"./us-west-1.sh"
-"./us-west-2.sh"
-"./ap-northeast-2.sh"
-"./ap-southeast-1.sh"
-"./ap-southeast-2.sh"
-"./ap-northeast-1.sh"
-"./ca-central-1.sh"
-"./eu-central-1.sh"
-"./eu-west-1.sh"
-"./eu-west-2.sh"    
+"./us-east-1.sh && echo > log/$datelog-us-east-1.txt"
+"./us-east-2.sh && echo > log/$datelog-us-east-2.txt"
+"./us-west-1.sh && echo > log/$datelog-us-west-1.txt"
+"./us-west-2.sh && echo > log/$datelog-us-west-2.txt"
+"./ap-northeast-2.sh && echo > log/$datelog-ap-northeast-2.txt"
+"./ap-southeast-1.sh && echo > log/$datelog-ap-southeast-1.txt"
+"./ap-southeast-2.sh && echo > log/$datelog-ap-southeast-2.txt"
+"./ap-northeast-1.sh && echo > log/$datelog-ap-northeast-1.txt"
+"./ca-central-1.sh && echo > log/$datelog-ca-central-1.txt"
+"./eu-central-1.sh && echo > log/$datelog-eu-central-1.txt"
+"./eu-west-1.sh && echo > log/$datelog-eu-west-1.txt"
+"./eu-west-2.sh && echo > log/$datelog-eu-west-2.txt"
+
         )
 
 $(shuf -n1 -e "${COMMANDS[@]}")
