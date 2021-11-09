@@ -13,7 +13,27 @@ rm -rf awscliv2.zip
 #require plugin JQ
 sudo apt install -y jq
 
+#wget all file 
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-2.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-southeast-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-southeast-2.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ca-central-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-central-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-west-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-west-2.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-east-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-east-2.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-west-1.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-west-2.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/add_cronjob.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/cron.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ec2delete.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/install_awscli.sh
 
 chmod +x *.sh
+echo "Add cron to system"
+./add_cronjob.sh
 
 echo "done"
+echo "Install Completed"
