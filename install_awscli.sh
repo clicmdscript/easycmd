@@ -1,7 +1,16 @@
 #!/bin/bash
 
+echo "Get AWS API access key"
+read -p "Enter AWS Access Key ID..........:: " AWS_CLI_KEY
+read -p "Enter AWS Secret Access Key......:: " AWS_CLI_SECRET
+read -p "Enter default region: us-east-1,us-east-2,us-west-1, us-west-2......:: " AWS_DEFAULT_RGION
+
 cd /home/ubuntu
 mkdir log/
+
+echo "Set timezone"
+sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+
 #wget all file 
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-1.sh
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-2.sh
@@ -18,6 +27,7 @@ wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-west-2.sh
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/add_cronjob.sh
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/cron.sh
 wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ec2delete.sh
+wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/view-ec2.sh
 #wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/install_awscli.sh
 
 chmod +x *.sh
@@ -38,5 +48,17 @@ rm -rf awscliv2.zip
 echo "Install JQ addon"
 sudo apt install -y jq
 
-echo "Install Completed"
+
+aws configure set aws_access_key_id $AWS_CLI_KEY
+aws configure set aws_secret_access_key $AWS_CLI_SECRET
+aws configure set default.region $AWS_DEFAULT_RGION
+
+echo "access key: $AWS_CLI_KEY"
+echo "secret key: $AWS_CLI_SECRET"
+echo "Default Region: $AWS_DEFAULT_RGION"
+echo ""
+echo "================ INSTALL COMPLETE==================="
+echo ""
+echo ""
+echo "need reboot system"
 
