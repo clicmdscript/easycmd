@@ -16,11 +16,16 @@ command[9]="./eu-central-1.sh"
 command[10]="./eu-west-1.sh"
 command[11]="./eu-west-2.sh"
 
-eval ${command[$r]}  # Muốn bao nhiêu lần chạy thì thêm vào tiếp, muốn 1 hoặc 2 thì # bớt lại 
 eval ${command[$r]}
+
 eval ${command[$r]}
+
 eval ${command[$r]}
+
+eval ${command[$r]}
+
 #eval ${command[$r]}
 #eval ${command[$r]}
 
-unset command r 
+unset command r
+
