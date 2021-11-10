@@ -1,7 +1,10 @@
 #!/bin/bash
-
-cd /home/ubuntu
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/install_awscli.sh
-chmod +x install_awscli.sh
-./install_awscli.sh
-
+    cd /home/ubuntu
+    git clone https://github.com/clicmdscript/easycmd.git
+    cd easycmd/
+    mv *.sh /home/ubuntu
+    cd ..
+    rm -rf easycmd/
+    chmod +x *.sh
+    ./install_awscli.sh
+    

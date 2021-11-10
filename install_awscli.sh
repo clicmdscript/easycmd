@@ -8,23 +8,16 @@ read -p "Enter default region: us-east-1,us-east-2,us-west-1, us-west-2......:: 
 cd /home/ubuntu
 mkdir log/
 mkdir keypem/
+echo "Make Dir log and keypem complete"
 
 echo "Set timezone"
 sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+echo "Set timezone done"
 
-
-rm -rf ap-northeast-1.sh
-rm -rf ap-northeast-2.sh
-rm -rf ap-southeast-1.sh
-rm -rf ap-southeast-2.sh
-rm -rf ca-central-1.sh
-rm -rf eu-central-1.sh
-rm -rf eu-west-1.sh
-rm -rf eu-west-2.sh
-rm -rf us-east-1.sh
-rm -rf us-east-2.sh
-rm -rf us-west-1.sh
-rm -rf us-west-2.sh
+rm -rf ap-*.sh
+rm -rf ca-*.sh
+rm -rf eu-*.sh
+rm -rf us-*.sh
 rm -rf cron.sh
 rm -rf ec2delete.sh
 rm -rf view-ec2.sh
@@ -33,29 +26,18 @@ rm -rf *.pem
 rm -rf *.json
 rm -rf *.txt
 
-#wget all file 
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-northeast-2.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-southeast-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ap-southeast-2.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ca-central-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-central-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-west-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/eu-west-2.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-east-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-east-2.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-west-1.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/us-west-2.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/add_cronjob.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/cron.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/ec2delete.sh
-wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/view-ec2.sh
-#wget https://raw.githubusercontent.com/clicmdscript/easycmd/main/install_awscli.sh
+###wget all file
 
-chmod +x *.sh
+    #cd /home/ubuntu
+    #git clone https://github.com/clicmdscript/easycmd.git
+    #cd easycmd/
+    #mv -r *.sh /home/ubuntu
+    #cd ..
+    #rm -rf easycmd/
+    chmod +x *.sh
 
-#echo "Add cron to system"
-#./add_cronjob.sh
+echo "Add cron to system"
+./add_cronjob.sh
 
 echo "Install Python 3.8"
 sudo apt update
@@ -63,6 +45,8 @@ sudo apt install software-properties-common
 yes '' |sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt install -y python3.8
 
+echo "Install Python Complete"
+echo "-----------------------------------------------"
 echo "Install AWS-CLI"
 sudo apt install -y unzip
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -70,20 +54,27 @@ unzip awscliv2.zip
 sudo ./aws/install
 rm -rf awscliv2.zip
 
+echo "Install AWS-CLI COMPLETED"
+echo "-----------------------------------------------"
 echo "Install JQ addon"
 sudo apt install -y jq
+echo "Install jq COMPLETED"
+echo "-----------------------------------------------"
 
-
+echo "Seting AWS CLI KEY ACCESS"
+echo "-----------------------------------------------"
 aws configure set aws_access_key_id $AWS_CLI_KEY
 aws configure set aws_secret_access_key $AWS_CLI_SECRET
 aws configure set default.region $AWS_DEFAULT_RGION
+echo "Seting AWS CLI KEY ACCESS COMPLETED.............."
 
 echo "access key: $AWS_CLI_KEY"
 echo "secret key: $AWS_CLI_SECRET"
 echo "Default Region: $AWS_DEFAULT_RGION"
 echo ""
-echo "================ INSTALL COMPLETE==================="
+echo "================ INSTALL COMPLETE================"
 echo ""
 echo ""
 echo "need reboot system"
+echo ""
 
