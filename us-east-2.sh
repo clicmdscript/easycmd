@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #import variable
-region=us-east-1
+region=us-east-2
 AMIRAN=("ami-0629230e074c580f2"
 "ami-08c213ebdf7b857c2"
 "ami-020db2c14939a8efb"
