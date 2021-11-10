@@ -2,10 +2,26 @@
 
 #import variable
 region=us-east-1
-amiubuntu=ami-083654bd07b5da81d
-#instancesType=t2.micro
-instancesType=t2.small
-#instancesType=t2.medium
+AMIRAN=("ami-083654bd07b5da81d"
+"ami-0279c3b3186e54acd"
+"ami-0416f96ae3d1a3f29"
+"ami-087107f9778206adb")
+amiubuntu=($(shuf -n1 -e "${AMIRAN[@]}"))
+
+#InstancesType
+
+INSRAND=("t2.micro"
+"t2.small"
+"t2.medium"
+"t3.nano"
+"t3.micro"
+"t3.small")
+instancesType=($(shuf -n1 -e "${INSRAND[@]}"))
+
+
+#instancesType=
+#instancesType=
+#instancesType=
 
 #get keyname
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
