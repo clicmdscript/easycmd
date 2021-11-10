@@ -14,18 +14,6 @@ echo "Set timezone"
 sudo timedatectl set-timezone Asia/Ho_Chi_Minh
 echo "Set timezone done"
 
-rm -rf ap-*.sh
-rm -rf ca-*.sh
-rm -rf eu-*.sh
-rm -rf us-*.sh
-rm -rf cron.sh
-rm -rf ec2delete.sh
-rm -rf view-ec2.sh
-rm -rf add_cronjob.sh
-rm -rf *.pem
-rm -rf *.json
-rm -rf *.txt
-
 ###wget all file
 
     #cd /home/ubuntu
