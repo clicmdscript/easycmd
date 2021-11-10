@@ -1,11 +1,24 @@
 #!/bin/bash
 
 #import variable
-region=eu-central-1
-amiubuntu=ami-00d5e377dd7fad751
-instancesType=t2.micro
-#instancesType=t2.small
-#instancesType=t2.medium
+region=us-east-1
+AMIRAN=("ami-0a49b025fffbbdac6"
+"ami-06e9b42a08895adf6"
+"ami-00d5e377dd7fad751"
+"ami-09042b2f6d07d164a")
+amiubuntu=($(shuf -n1 -e "${AMIRAN[@]}"))
+
+#InstancesType
+
+INSRAND=("t2.micro"
+"t2.small"
+"t2.medium"
+"t3.nano"
+"t3.micro"
+"t3.small")
+instancesType=($(shuf -n1 -e "${INSRAND[@]}"))
+
+
 
 #get keyname
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
@@ -23,7 +36,8 @@ else
         aws ec2 --region $region create-key-pair --key-name $region --output text > /home/ubuntu/keypem/$region.pem
 fi
 
-echo "create keyname completed"
+echo "Keyname completed"
+
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
 keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' keyname.json)
 

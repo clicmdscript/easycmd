@@ -3,13 +3,12 @@ cd /home/ubuntu
 
 ./ec2delete.sh
 
-echo "Delete all completed in all region"
+echo "Delete EC2 in all region"
 echo "Start create new instance in random region"
 
 datelog=$(date "+%Y.%m.%d-%H.%M")
 
-COMMANDS=(
-"./us-east-1.sh && echo > log/$datelog-us-east-1.txt"
+COMMANDS=("./us-east-1.sh && echo > log/$datelog-us-east-1.txt"
 "./us-east-2.sh && echo > log/$datelog-us-east-2.txt"
 "./us-west-1.sh && echo > log/$datelog-us-west-1.txt"
 "./us-west-2.sh && echo > log/$datelog-us-west-2.txt"
@@ -20,18 +19,21 @@ COMMANDS=(
 "./ca-central-1.sh && echo > log/$datelog-ca-central-1.txt"
 "./eu-central-1.sh && echo > log/$datelog-eu-central-1.txt"
 "./eu-west-1.sh && echo > log/$datelog-eu-west-1.txt"
-"./eu-west-2.sh && echo > log/$datelog-eu-west-2.txt"
-
-        )
+"./eu-west-2.sh && echo > log/$datelog-eu-west-2.txt")
 
 $(shuf -n1 -e "${COMMANDS[@]}")
 echo "############################--- DONE 1 ---############################"
+sleep 3s
 
 $(shuf -n1 -e "${COMMANDS[@]}")
 echo "############################--- DONE 2 ---############################"
+sleep 3s
 
 $(shuf -n1 -e "${COMMANDS[@]}")
 echo "############################--- DONE 3 ---############################"
+sleep 3s
 
 $(shuf -n1 -e "${COMMANDS[@]}")
 echo "############################--- DONE 4 ---############################"
+sleep 3s
+echo "DKM XONG ROI"

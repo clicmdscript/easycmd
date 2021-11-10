@@ -19,9 +19,6 @@ INSRAND=("t2.micro"
 instancesType=($(shuf -n1 -e "${INSRAND[@]}"))
 
 
-#instancesType=
-#instancesType=
-#instancesType=
 
 #get keyname
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
@@ -39,7 +36,8 @@ else
         aws ec2 --region $region create-key-pair --key-name $region --output text > /home/ubuntu/keypem/$region.pem
 fi
 
-echo "create keyname completed"
+echo "Keyname completed"
+
 aws ec2 describe-key-pairs --key-name --region $region | jq . > keyname.json
 keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' keyname.json)
 
