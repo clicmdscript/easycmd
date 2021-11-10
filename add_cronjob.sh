@@ -17,7 +17,6 @@ cron=("$csec $cmin $chour $ASK 1-12 $RDAY cd /home/ubuntu/ && ./cron.sh >> log/l
 (crontab -u ubuntu -l; echo "$cron" ) | crontab -u ubuntu -
 
 sudo /etc/init.d/cron restart
-systemctl status cron
 
 echo "Cron has been added to system"
 echo "...............................CRON LIST..........."
