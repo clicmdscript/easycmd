@@ -23,6 +23,7 @@ Select one region:: " AWS_DEFAULT_RGION
 cd /home/ubuntu
 mkdir log/
 mkdir keypem/
+mkdir ippool/
 echo "Make Dir log and keypem complete"
 
 echo "Set timezone"

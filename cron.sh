@@ -2,6 +2,7 @@
 cd /home/ubuntu
 
 ./ec2delete.sh
+rm -rf ippool/*.txt
 
 echo "Delete EC2 in all region"
 echo "Start create new instance in random region"
