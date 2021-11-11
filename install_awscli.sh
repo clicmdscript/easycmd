@@ -24,7 +24,7 @@ cd /home/ubuntu
 mkdir log/
 mkdir keypem/
 mkdir ippool/
-echo "Make Dir log and keypem complete"
+echo "Make Dir log, ippool and keypem complete"
 
 echo "Set timezone"
 sudo timedatectl set-timezone Asia/Ho_Chi_Minh
@@ -76,7 +76,9 @@ echo "access key: $AWS_CLI_KEY"
 echo "secret key: $AWS_CLI_SECRET"
 echo "Default Region: $AWS_DEFAULT_RGION"
 echo ""
-
+echo "PLEASE DISABLE REGION OF THIS VPS TO PREVENT FROM DELETE"
+sleep 3s
+./prevent-region.sh
 echo "================ INSTALL COMPLETE================"
 echo ""
 echo ""
