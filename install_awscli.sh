@@ -3,7 +3,22 @@
 echo "Get AWS API access key"
 read -p "Enter AWS Access Key ID..........:: " AWS_CLI_KEY
 read -p "Enter AWS Secret Access Key......:: " AWS_CLI_SECRET
-read -p "Enter default region: us-east-1,us-east-2,us-west-1, us-west-2......:: " AWS_DEFAULT_RGION
+read -p "Enter default region: \
+
+# 1     N.Virginia  us-east-1
+# 2     OHIO        us-east-2
+# 3     N.Califonia us-west-1
+# 4     Oregon      us-west-2
+# 5     SEOUL       ap-northeast-2
+# 6     SINGAPORE   ap-southeast-1
+# 7     SYDNEY      ap-southeast-2
+# 8     TOKYO       ap-northeast-1
+# 9     CANADA      ca-central-1
+# 10    FRANKFURT   eu-central-1
+# 11    IRELAND     eu-west-1
+# 12    LONDON      =eu-west-2
+
+Select one region:: " AWS_DEFAULT_RGION
 
 cd /home/ubuntu
 mkdir log/
@@ -60,6 +75,7 @@ echo "access key: $AWS_CLI_KEY"
 echo "secret key: $AWS_CLI_SECRET"
 echo "Default Region: $AWS_DEFAULT_RGION"
 echo ""
+
 echo "================ INSTALL COMPLETE================"
 echo ""
 echo ""

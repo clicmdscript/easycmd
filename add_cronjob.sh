@@ -1,25 +1,22 @@
 #!/bin/bash
 
-DAYRAN=("SUN"
-"MON"
-"TUE"
-"WED"
-"THU"
-"FRI"
-"SAT")
-RDAY=($(shuf -n1 -e "${DAYRAN[@]}"))
-csec=($(shuf -i 1-59 -n 1))
+rm -rf cronjobgen.txt
+crontab -r
+
 cmin=($(shuf -i 2-58 -n 1))
 chour=($(shuf -i 7-21 -n 1))
-ASK=("?")
+cday=($(shuf -i 4-5 -n 1))
 
-cron=("$csec $cmin $chour $ASK 1-12 $RDAY cd /home/ubuntu/ && ./cron.sh >> log/log.txt")
-(crontab -u ubuntu -l; echo "$cron" ) | crontab -u ubuntu -
+tee -a cronjobgen.txt <<EOF
+$cmin $chour */$cday * * cd /home/ubuntu/ && ./cron.sh >> log/log.txt
+$cmin $chour */$cday * * cd /home/ubuntu/ && ./add_cronjob.sh >> log/log_addcron.txt
+EOF
 
-sudo /etc/init.d/cron restart
+cronjobgen=$(head -2 cronjobgen.txt)
+(crontab -u ubuntu -l; echo "$cronjobgen" ) | crontab -u ubuntu -
 
 echo "Cron has been added to system"
-echo "...............................CRON LIST..........."
+echo "..................CRON LIST..............................."
 crontab -l
 
-echo "Done"
+echo "Install new cronjob complete"
