@@ -1,4 +1,4 @@
-#import variable
+#List of ami in each region
 
 AMIRAN=("ami-0fdf70ed5c34c5f52"
 "ami-0f9853ca76d115e7b"

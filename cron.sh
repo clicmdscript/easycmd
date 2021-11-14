@@ -36,8 +36,7 @@ sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
 echo "############################--- DONE 4/4 ---############################"
 sleep 1s
-echo "Sending mail"
-cd mail/
-./spmail.sh
+echo "Sending mail......"
+cd mail/ && ./spmail.sh
 cd ..
 echo "DONE...................................................................."

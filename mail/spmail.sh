@@ -4,7 +4,7 @@ source emailconf.sh
 sleep_time=($(shuf -i 2-13 -n 1))
 sleep $sleep_time
 
-./smessage.sh > smessage.txt
+cd /home/ubuntu/mail && ./smessage.sh > smessage.txt
 
 #Start sending mail
 ./smtp-cli --missing-modules-ok \

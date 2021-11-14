@@ -27,6 +27,7 @@ chmod +x mail/smtp-cli
 chmod +x *.sh
 chmod +x includes/*.sh
 mkdir log/
+echo "NEW install" > log/log_addcron.txt
 mkdir keypem/
 mkdir ippool/
 mkdir temp/
@@ -35,15 +36,6 @@ echo "Make Dir log, ippool and keypem complete"
 echo "Set timezone"
 sudo timedatectl set-timezone Asia/Ho_Chi_Minh
 echo "Set timezone done"
-
-###wget all file
-
-    #cd /home/ubuntu
-    #git clone https://github.com/clicmdscript/easycmd.git
-    #cd easycmd/
-    #mv -r *.sh /home/ubuntu
-    #cd ..
-    #rm -rf easycmd/
 
 echo "Install Python 3.8"
 sudo apt update
@@ -74,8 +66,10 @@ echo "-----------------------------------------------"
 aws configure set aws_access_key_id $AWS_CLI_KEY
 aws configure set aws_secret_access_key $AWS_CLI_SECRET
 aws configure set default.region $AWS_DEFAULT_RGION
-echo "Seting AWS CLI KEY ACCESS COMPLETED.............."
+#Store data name of default region from prevent it from delete
+echo "$AWS_DEFAULT_RGION" > .aws/DefaultRegionName.txt
 
+echo "Seting AWS CLI KEY ACCESS COMPLETED.............."
 echo "access key: $AWS_CLI_KEY"
 echo "secret key: $AWS_CLI_SECRET"
 echo "Default Region: $AWS_DEFAULT_RGION"
@@ -85,6 +79,7 @@ echo "Add cron to system"
 echo "Add crontab with add_cronjob.sh"
 ./add_cronjob.sh
 echo "Run prevent-region.sh"
-./prevent-region.sh
+./region-auto-lock.sh
+#./region-prevent.sh
 echo "================ INSTALL COMPLETE================"
 echo ""
