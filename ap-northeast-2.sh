@@ -40,3 +40,4 @@ SubnetId=$(head -1 temp/tempsubnet.txt)
 aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 --instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text
 #finish
 echo "Create done"
+
