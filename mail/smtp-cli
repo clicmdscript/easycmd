@@ -1,11 +1,4 @@
 #!/usr/bin/perl
-
-#
-# Command line SMTP client with SSL, STARTTLS, SMTP-AUTH and IPv6 support.
-# Michal Ludvig, 2003-2019
-# See http://smtp-cli.logix.cz for details
-# and https://github.com/mludvig/smtp-cli for code.
-# Thanks to all contributors for ideas and fixes!
 #
 
 my $version = "3.10";
@@ -995,8 +988,6 @@ Usage: smtp-cli [--options]
         --version               Print: smtp-cli version $version
         --help                  Guess what is this option for ;-)
 
-PayPal donations: http://smtp-cli.logix.cz/donate
-                  Thanks in advance for your support!
 
 ");
 	exit (0);

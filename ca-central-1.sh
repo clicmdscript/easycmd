@@ -18,10 +18,21 @@ then
 		#nothing todo
 else
         echo "$PROCESS not exits, create new keyname" ;
-        aws ec2 --region $region create-key-pair --key-name $region --output text > keypem/$region.pem
-fi
-echo "Keyname completed"
+                source includes/list_words_arr.sh
+                rm -rf temp/tmphex.txt
+                tmphex=$WORDTOUSE
+                echo "$tmphex" > temp/tmphex.txt
+                keynamenew=$(head -1 temp/tmphex.txt)$DOT$region
 
+                aws ec2 create-key-pair \
+                --key-name $keynamenew \
+                --region $region \
+                --query 'KeyMaterial' \
+                --output text > keypem/$keynamenew.pem
+fi
+
+echo "Keyname completed"
+echo "Get Keyname again for create EC2"
 aws ec2 describe-key-pairs --key-name --region $region | jq . > temp/keyname.json
 keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' temp/keyname.json)
 
@@ -38,6 +49,18 @@ SubnetId=$(head -1 temp/tempsubnet.txt)
 #   $SubnetId
 
 #create
-aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 --instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text
+#aws ec2 run-instances --region $region --image-id $amiubuntu --count 1 
+#--instance-type $instancesType --key-name $keyname --security-group-ids $groupsecid --subnet-id $SubnetId --output text
+
+aws ec2 run-instances --region $region \
+--image-id $amiubuntu \
+--count 1 \
+--instance-type $instancesType \
+--key-name $keyname \
+--security-group-ids $groupsecid \
+--subnet-id $SubnetId \
+--query 'Instances[0].InstanceId' \
+--output text
+
 #finish
 echo "Create done"

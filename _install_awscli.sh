@@ -20,7 +20,17 @@ read -p "Enter text with Name of default region like:: US-EAS***: \
 
 Select one region:: " AWS_DEFAULT_RGION
 read -p "ENTER - ACCOUNT NAME OR NUMBER......:: " ACCNAMENUM
+
+FILEACN=accountname.txt
+if [ -f "$FILEACN" ]; then
+    echo "$FILEACN exists."
+else
+
+echo "File not exits. create new one"
 echo "$ACCNAMENUM" > accountname.txt
+cp accountname.txt .aws/accountname.txt
+
+fi
 
 chmod +x mail/*.sh
 chmod +x mail/smtp-cli
