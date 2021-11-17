@@ -47,4 +47,4 @@ find ippool/ -type f -size 0 -delete
 zoneavai=$(ls ippool/)
 echo "$zoneavai" > zoneip.txt
 
-./remove_duplicate_mainregion.sh
+./_remove_duplicate_mainregion.sh

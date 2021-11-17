@@ -1,7 +1,7 @@
 #!/bin/bash
  
 rm -rf ippool/
-rm -rf keypem
+rm -rf keypem/
 rm -rf log/
 rm -rf *.sh
 rm -rf cronjobgen*
@@ -20,9 +20,6 @@ chmod +x *.sh
 chmod +x includes/*.sh
 mkdir log/
 echo "NEW install" > log/log_addcron.txt
-mkdir keypem/
-mkdir ippool/
-mkdir temp/
 
 ./_install_awscli.sh
 

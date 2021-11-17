@@ -21,7 +21,7 @@ lmcday=($(shuf -i 6-7 -n 1))
 
 # Create new content of log/cronjobgen.txt
 tee -a log/cronjobgen.txt <<EOF
-$rmcmin $rmchour */$rmcday * * cd /home/ubuntu/ && ./aws.listec2_remove_duplicate.sh
+$rmcmin $rmchour */$rmcday * * cd /home/ubuntu/ && ./aws.listec2_remove_duplicate.sh >> log/log_remove_duplicate.txt
 $cmin $chour */$cday * * cd /home/ubuntu/ && ./cron.sh >> log/log.txt
 $cmin $chour */$cday * * cd /home/ubuntu/ && ./add_cronjob.sh >> log/log_addcron.txt
 EOF
