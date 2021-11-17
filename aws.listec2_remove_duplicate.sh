@@ -3,6 +3,20 @@
 #import list region
 source includes/_list_region.sh
 
+cd /home/ubuntu/ippool/
+rm -rf needtodelete1.txt
+rm -rf needtodelete2.txt
+rm -rf tobedelete2.txt
+rm -rf idel1.txt
+rm -rf idel2.txt
+rm -rf eu-*.txt
+rm -rf ap-*.txt
+rm -rf us-*.txt
+rm -rf ca-*.txt
+rm -rf needtodelete.txt
+
+cd ..
+
 set +m
 for region in $(aws ec2 describe-regions --query "Regions[*].[RegionName]" --output text); do 
   aws ec2 describe-instances --region "$region" | jq ".Reservations[].Instances[] | {type: .InstanceType, state: .State.Name, zone: .Placement.AvailabilityZone}" &
@@ -35,3 +49,6 @@ aws ec2 describe-instances --region $region12 --query "Reservations[].Instances[
 find ippool/ -type f -size 0 -delete
 zoneavai=$(ls ippool/)
 echo "$zoneavai" > zoneip.txt
+
+cd /home/ubuntu/ippool
+./remove_duplicate_mainregion.sh
