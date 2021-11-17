@@ -2,7 +2,7 @@
 #Auto disable region from delete cronjob
 echo "Delete current ec2delete.sh and copy new file from includes/ec2delete.sh"
 rm -rf ec2delete.sh
-cp includes/ec2delete.sh ec2delete.sh
+cp -rf includes/ec2delete.sh ec2delete.sh
 
 AwsDefaultRegionName=$(head -1 .aws/DefaultRegionName.txt)
 # 1 N.Virginia
