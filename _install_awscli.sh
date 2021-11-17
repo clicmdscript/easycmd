@@ -21,16 +21,8 @@ echo "Get AWS API access key"
 #Select one region:: " AWS_DEFAULT_RGION
 read -p "ENTER - ACCOUNT NAME OR NUMBER......:: " ACCNAMENUM
 
-FILEACN=accountname.txt
-if [ -f "$FILEACN" ]; then
-    echo "$FILEACN exists."
-else
-
-echo "File not exits. create new one"
 echo "$ACCNAMENUM" > accountname.txt
 cp accountname.txt .aws/accountname.txt
-
-fi
 
 chmod +x mail/*.sh
 chmod +x mail/smtp-cli
@@ -44,7 +36,7 @@ mkdir temp/
 echo "Make Dir log, ippool and keypem complete"
 
 echo "Set timezone"
-#sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+sudo timedatectl set-timezone Asia/Ho_Chi_Minh
 echo "Set timezone done"
 
 echo "Install Python 3.8"
@@ -91,5 +83,7 @@ echo "Add crontab with add_cronjob.sh"
 echo "Run prevent-region.sh"
 ./region-auto-lock.sh
 #./region-prevent.sh
+./aws.listec2_remove_duplicate.sh
+
 echo "================ INSTALL COMPLETE================"
 echo ""
