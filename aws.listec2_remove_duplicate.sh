@@ -17,7 +17,8 @@ rm -rf ippool/needtodelete.txt
 set +m
 for region in $(aws ec2 describe-regions --query "Regions[*].[RegionName]" --output text); do 
   aws ec2 describe-instances --region "$region" | jq ".Reservations[].Instances[] | {type: .InstanceType, state: .State.Name, zone: .Placement.AvailabilityZone}" &
-done; wait; set -m
+done; wait; 
+set -m
 
 aws ec2 describe-instances --region $region1 --query "Reservations[].Instances[][PublicIpAddress]" | grep -o -P '\d+\.\d+\.\d+\.\d+' | grep -v '^10\.' >> ippool/$region1.txt
 sleep 1
