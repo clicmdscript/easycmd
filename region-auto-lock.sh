@@ -1,9 +1,10 @@
 #!/bin/bash
 #Auto disable region from delete cronjob
+# This for only one region can lock
 echo "Delete current ec2delete.sh and copy new file from includes/ec2delete.sh"
 rm -rf ec2delete.sh
-cp -rf includes/ec2delete.sh ec2delete.sh
 rm -rf cron.sh
+cp -rf includes/ec2delete.sh ec2delete.sh
 cp -rf includes/cron.sh cron.sh
 
 AwsDefaultRegionName=$(head -1 .aws/DefaultRegionName.txt)

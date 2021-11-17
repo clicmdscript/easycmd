@@ -18,19 +18,13 @@ read -p "Enter text with Name of default region like:: US-EAS***: \
 # 11    IRELAND     eu-west-1
 # 12    LONDON      eu-west-2
 
-Select one region:: " AWS_DEFAULT_RGION
-read -p "ENTER - ACCOUNT NAME OR NUMBER......:: " ACCNAMENUM
+Select aws configure set default.region:: " AWS_DEFAULT_RGION
+read -p "ENTER - ACCOUNT NAME for Email ......:: " ACCNAMENUM
+read -p "ENTER - DEFAULT REGION NOT DELETE and CREATE MORE VPS......:: " DefaultRegionName2
 
-FILEACN=accountname.txt
-if [ -f "$FILEACN" ]; then
-    echo "$FILEACN exists."
-else
-
-echo "File not exits. create new one"
 echo "$ACCNAMENUM" > accountname.txt
 cp accountname.txt .aws/accountname.txt
-
-fi
+echo "DefaultRegionName2" > .aws/DefaultRegionName.txt
 
 chmod +x mail/*.sh
 chmod +x mail/smtp-cli

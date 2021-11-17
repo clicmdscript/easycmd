@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# This for many region locked
 quit=n 
 while [  "$quit"   =   "n"  ] 
 do 
