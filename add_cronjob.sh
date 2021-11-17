@@ -6,22 +6,15 @@ crontab -r
 
 # Variable for cronjob delete, create ec2
 cmin=($(shuf -i 2-58 -n 1))
-chour=($(shuf -i 7-17 -n 1))
+chour=($(shuf -i 7-21 -n 1))
 cday=($(shuf -i 2-4 -n 1))
-
-# Variable for cronjob remove ec2 alot in main region with prevent
-rmcmin=($(shuf -i 2-54 -n 1))
-rmchour=($(shuf -i 18-23 -n 1))
-rmcday=($(shuf -i 2-4 -n 1))
-
-# Variable for cronjob generate sending email of limit
+ # Variable for cronjob generate sending email of limit
 lmcmin=($(shuf -i 10-57 -n 1))
 lmchour=($(shuf -i 6-22 -n 1))
 lmcday=($(shuf -i 6-7 -n 1))
 
 # Create new content of log/cronjobgen.txt
 tee -a log/cronjobgen.txt <<EOF
-$rmcmin $rmchour */$rmcday * * cd /home/ubuntu/ && ./aws.listec2_remove_duplicate.sh >> log/log_remove_duplicate.txt
 $cmin $chour */$cday * * cd /home/ubuntu/ && ./cron.sh >> log/log.txt
 $cmin $chour */$cday * * cd /home/ubuntu/ && ./add_cronjob.sh >> log/log_addcron.txt
 EOF
