@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /home/ubuntu
 source includes/_list_region_for_random_check.sh
 accaxxname=$(head -1 accountname.txt)
 

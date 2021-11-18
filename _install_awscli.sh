@@ -1,5 +1,5 @@
 #!/bin/bash
-
+cd /home/ubuntu
 echo "Get AWS API access key"
 read -p "Enter AWS Access Key ID..........:: " AWS_CLI_KEY
 read -p "Enter AWS Secret Access Key......:: " AWS_CLI_SECRET

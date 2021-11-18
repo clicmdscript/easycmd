@@ -1,5 +1,6 @@
 #!/bin/bash
 # Run aws.check-limit to limit.txt file
+cd /home/ubuntu/mail
 source emailconf.sh
 sleep_time=($(shuf -i 2-16 -n 1))
 sleep $sleep_time
