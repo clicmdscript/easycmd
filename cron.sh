@@ -29,8 +29,8 @@ region12=eu-west-2
 #import list region
 #source includes/_list_region.sh
 echo " Run function delete all ec2, exlcude zone store ec2 running aws-cli. Remove ip list"
-sh /home/ubuntu/ec2delete.sh
-cd /home/ubuntu
+cd /home/ubuntu && ./ec2delete.sh
+
 echo "Delete done"
 rm -rf ippool/*.txt
 echo "Delete ippool/txt done"
