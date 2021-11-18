@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu
+
 #import variable
 region=us-west-1
         source includes/_ec2_type.sh

@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /home/ubuntu
 #import variable
 region=ap-northeast-2
         source includes/_ec2_type.sh

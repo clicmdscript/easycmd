@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /home/ubuntu
+
 #import list region
 source includes/_list_region.sh
 
