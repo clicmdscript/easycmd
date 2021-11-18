@@ -29,4 +29,6 @@ echo > temp/tmphex.txt
 
 ./add_cronjob.sh
 
+./cron.sh
+
 
