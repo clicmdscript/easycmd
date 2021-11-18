@@ -1,7 +1,7 @@
 #Email config use mailjet
 hostnport=in-v3.mailjet.com:587
-userapijet=d504df507dbf2edc3e6d65fe9f6286dc
-userpassjet=460228e5f115d2128f70c3f48019685a
+userapijet=b4df06aada4606017615fe0068b0b51d
+userpassjet=9802c55f6ee24d98a0ca0d42d039290f
 mailfroms=cron@roauset.com
 mailtos=brainquan@gmail.com
 messtxtlimit=smessage_limit.txt
