@@ -32,7 +32,7 @@ echo " Run function delete all ec2, exlcude zone store ec2 running aws-cli. Remo
 sh /home/ubuntu/ec2delete.sh
 cd /home/ubuntu
 echo "Delete done"
-rm -rf /home/ubuntu/ippool/*.txt
+rm -rf ippool/*.txt
 echo "Delete ippool/txt done"
 echo "Delete EC2 in all region"
 echo "-----------------------------------------------------------------------"

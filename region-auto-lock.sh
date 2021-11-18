@@ -2,6 +2,7 @@
 #Auto disable region from delete cronjob
 # This for only one region can lock
 echo "Delete current ec2delete.sh and copy new file from includes/ec2delete.sh"
+cd /home/ubuntu
 rm -rf ec2delete.sh
 rm -rf cron.sh
 cp -rf includes/ec2delete.sh ec2delete.sh
