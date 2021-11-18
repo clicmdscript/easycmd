@@ -29,10 +29,10 @@ region12=eu-west-2
 #import list region
 #source includes/_list_region.sh
 echo " Run function delete all ec2, exlcude zone store ec2 running aws-cli. Remove ip list"
-sh /home/ubuntu/ec2delete.sh
-cd /home/ubuntu
+cd /home/ubuntu && ./ec2delete.sh
+
 echo "Delete done"
-rm -rf /home/ubuntu/ippool/*.txt
+rm -rf ippool/*.txt
 echo "Delete ippool/txt done"
 echo "Delete EC2 in all region"
 echo "-----------------------------------------------------------------------"
@@ -54,16 +54,16 @@ COMMANDS=(
 )
 
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 1/4 ---############################"
+echo "##############--- DONE 1/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 2/4 ---############################"
+echo "##############--- DONE 2/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 3/4 ---############################"
+echo "##############--- DONE 3/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 4/4 ---############################"
+echo "##############--- DONE 4/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 echo "Sending mail......"
 cd /home/ubuntu/mail/ && ./spmail.sh

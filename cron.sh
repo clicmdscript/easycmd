@@ -54,16 +54,16 @@ COMMANDS=(
 )
 
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 1/4 ---############################"
+echo "##############--- DONE 1/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 2/4 ---############################"
+echo "##############--- DONE 2/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 3/4 ---############################"
+echo "##############--- DONE 3/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "############################--- DONE 4/4 ---############################"
+echo "##############--- DONE 4/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
 sleep 1s
 echo "Sending mail......"
 cd /home/ubuntu/mail/ && ./spmail.sh
