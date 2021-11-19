@@ -8,12 +8,12 @@ crontab -r
 cmin=($(shuf -i 2-58 -n 1))
 chour=($(shuf -i 7-21 -n 1))
 cday=($(shuf -i 2-4 -n 1))
- # Variable for cronjob generate sending email of limit
+ # Variable for cronjob generate sending email of limit and time for adding add_crontab.sh with sleep 10 delay
 lmcmin=($(shuf -i 10-57 -n 1))
 lmchour=($(shuf -i 6-22 -n 1))
 lmcday=($(shuf -i 6-7 -n 1))
 
-# Create new content of log/cronjobgen.txt
+# Create new content of log/cronjobgen.txt. Use for add_cronjob task and SPmail_limit
 tee -a log/cronjobgen.txt <<EOF
 $lmcmin $lmchour */$lmcday * * cd /home/ubuntu/ && sleep 10 && ./add_cronjob.sh >> log/log_addcron.txt
 EOF
