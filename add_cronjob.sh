@@ -15,7 +15,7 @@ lmcday=($(shuf -i 6-7 -n 1))
 
 # Create new content of log/cronjobgen.txt
 tee -a log/cronjobgen.txt <<EOF
-$cmin $chour */$cday * * cd /home/ubuntu/ && sleep 10 && ./add_cronjob.sh >> log/log_addcron.txt
+$lmcmin $lmchour */$lmcday * * cd /home/ubuntu/ && sleep 10 && ./add_cronjob.sh >> log/log_addcron.txt
 EOF
 
 # Add cronjob to system
