@@ -37,34 +37,34 @@ echo "Delete ippool/txt done"
 echo "Delete EC2 in all region"
 echo "-----------------------------------------------------------------------"
 echo "Start create new instance in random region"
-datelog=$(date "+%Y.%m.%d-%H.%M")
+#datelog=$(date "+%Y.%m.%d-%H.%M")
 COMMANDS=(
-"./$region1.sh > log/$datelog-auto-$region1.txt"
-"./$region2.sh > log/$datelog-auto-$region2.txt"
-"./$region3.sh > log/$datelog-auto-$region3.txt"
-"./$region4.sh > log/$datelog-auto-$region4.txt"
-"./$region5.sh > log/$datelog-auto-$region5.txt"
-"./$region6.sh > log/$datelog-auto-$region6.txt"
-"./$region7.sh > log/$datelog-auto-$region7.txt"
-"./$region8.sh > log/$datelog-auto-$region8.txt"
-"./$region9.sh > log/$datelog-auto-$region9.txt"
-"./$region10.sh > log/$datelog-$region10.txt"
-"./$region11.sh > log/$datelog-$region11.txt"
-"./$region12.sh > log/$datelog-$region12.txt"
+"./$region1.sh"
+"./$region2.sh"
+"./$region3.sh"
+"./$region4.sh"
+"./$region5.sh"
+"./$region6.sh"
+"./$region7.sh"
+"./$region8.sh"
+"./$region9.sh"
+"./$region10.sh"
+"./$region11.sh"
+"./$region12.sh"
 )
 
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "##############--- DONE 1/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
-sleep 1s
+echo "#########--- DONE 1/4 ---###---###########"
+
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "##############--- DONE 2/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
-sleep 1s
+echo "#########--- DONE 2/4 ---###---###########"
+
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "##############--- DONE 3/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
-sleep 1s
+echo "#########--- DONE 3/4 ---###---###########"
+
 $(shuf -n1 -e "${COMMANDS[@]}")
-echo "##############--- DONE 4/4 ---###--- "$(shuf -n1 -e "${COMMANDS[@]}")"#"
-sleep 1s
+echo "#########--- DONE 4/4 ---###---###########"
+
 echo "Sending mail......"
 cd /home/ubuntu/mail/ && ./spmail.sh
 cd ..

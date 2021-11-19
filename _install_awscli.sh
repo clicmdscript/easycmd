@@ -24,7 +24,6 @@ read -p "ENTER - DEFAULT REGION NOT DELETE and CREATE MORE VPS......:: " Default
 
 echo "$ACCNAMENUM" > accountname.txt
 cp accountname.txt .aws/accountname.txt
-echo "DefaultRegionName2" > .aws/DefaultRegionName.txt
 
 chmod +x mail/*.sh
 chmod +x mail/smtp-cli
