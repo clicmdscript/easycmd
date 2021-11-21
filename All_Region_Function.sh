@@ -30,11 +30,13 @@ echo "Get Keyname again for create EC2"
         keyname=$(sed -r -n -e '/^[[:space:]]*"KeyName":/s/^[^:]*: *"(.*)", *$/\1/p' temp/keyname.json)
 
 #create security group
+        echo "Create Security Group...."
         sgscnumbername=($(shuf -i 4-300 -n 1))
         launchwizard="launch-wizard-$sgscnumbername"
         aws ec2 create-security-group --region $region --description $launchwizard --group-name $launchwizard 
 
 #get security group id
+        echo "Get Security Group ID name...."
         aws ec2 describe-security-groups --region $region | jq . > temp/securitygr.json
         sed -r -n -e '/^[[:space:]]*"GroupId":/s/^[^:]*: *"(.*)", *$/\1/p' temp/securitygr.json > temp/temgroup.txt
         rm -rf temp/ScGroupArr.txt
@@ -58,6 +60,7 @@ chmod +x temp/ScGroupArr_use.sh
         SecurityGroup=($(shuf -n1 -e "${ScGroupArr[@]}"))
 
 # get subnet id
+        echo "Get SubID name"
         aws ec2 describe-subnets --region $region | jq . > temp/SubnetId.json
         sed -r -n -e '/^[[:space:]]*"SubnetId":/s/^[^:]*: *"(.*)", *$/\1/p' temp/SubnetId.json > temp/tempsubnet.txt
 #SubnetId=$(head -1 temp/tempsubnet.txt)
@@ -80,7 +83,9 @@ chmod +x temp/ArrSubnetID_use.sh
         source temp/ArrSubnetID_use.sh
         SubnetId=($(shuf -n1 -e "${SubNetIDArr[@]}"))
 # Var $SubnetId
+
 # Create EC2
+        echo "Start create new EC2"
 aws ec2 run-instances --region $region \
         --image-id $amiubuntu \
         --count 1 \
@@ -93,9 +98,16 @@ aws ec2 run-instances --region $region \
 
 # Get Instance ID from file .log
 IDinstance_justcreated=$(cat log/$region.log)
-
+echo "Get Name instance ID just create: $IDinstance_justcreated"
 # Set value here for MATCH
-OK_IF=($(shuf -i 1-5 -n 1))
+VarOkif=(
+"1"
+"2"
+"3"
+"4"
+"5")
+OK_IF=($(shuf -n1 -e "${VarOkif[@]}"))
+
 BEOK=3
 if [ $BEOK == $OK_IF ]
 then
@@ -106,7 +118,7 @@ then
 Detail_subzone=$(aws ec2 describe-instances \
         --region $region \
         --instance-ids $IDinstance_justcreated | sed -r -n -e '/^[[:space:]]*"AvailabilityZone":/s/^[^:]*: *"(.*)", *$/\1/p')
-
+echo "Subzone of Instance: $Detail_subzone"
 # Gen random GB for EBS create
 EBS_Size=($(shuf -i 5-30 -n 1))
 
@@ -120,7 +132,7 @@ aws ec2 create-volume \
 VolID_EBS=$(cat log/$region-ebs.log)
 
 #waiting for EC2 running and startup
-TIME_WAIT_RUNNING=($(shuf -i 30-60 -n 1))
+TIME_WAIT_RUNNING=($(shuf -i 35-60 -n 1))
 sleep $TIME_WAIT_RUNNING
 #aws ec2 wait instance-running \ 
 #        --instance-ids $IDinstance_justcreated
@@ -149,6 +161,6 @@ elif [ $a != $b ]
 then
    echo "-------== $OK_IF ==---------->>>>>>>>>>--CANCEL CREATE EBS"
 fi
-
+unset OK_IF
 # finish
 echo "COMPLETE for region: $region"
